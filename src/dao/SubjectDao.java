@@ -35,7 +35,7 @@ public class SubjectDao extends Dao {
 			statement = connection.prepareStatement("select * from subject where cd=? and school=?");
 			// プリペアードステートメントに学校コードをバインド
 			statement.setString(1, cd);
-			statement.setObject(2, school);
+			statement.setString(2, school.getCd());
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
@@ -97,7 +97,7 @@ public class SubjectDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement(baseSql + order);
 			// プリペアードステートメントに学校コードをバイン
-			statement.setObject(1, school.getCd());
+			statement.setString(1, school.getCd());
 			// プリペアードステートメントを実行
 			rSet = statement.executeQuery();
 			// リザルトセットを全権走査
@@ -162,7 +162,7 @@ public class SubjectDao extends Dao {
 				// プリペアードステートメントに値をバインド
 				statement.setString(1, subject.getCd());
 				statement.setString(2, subject.getName());
-				statement.setObject(3, subject.getSchool());
+				statement.setString(3, subject.getSchool().getCd());
 			} else {
 				// 科目が存在した場合
 				// プリペアードステートメントにUPDATE文をセット
@@ -171,7 +171,7 @@ public class SubjectDao extends Dao {
 				// プリペアードステートメントに値をバインド
 				statement.setString(1, subject.getCd());
 				statement.setString(2, subject.getName());
-				statement.setObject(3, subject.getSchool());
+				statement.setString(3, subject.getSchool().getCd());
 			}
 
 			// プリペアードステートメントを実行
