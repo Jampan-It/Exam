@@ -39,9 +39,9 @@
 						<label class="form-label" for="student-f3-select">科目</label>
 						<select class="form-select " id="student-f3-select" name="f3">
 							<option value="0">--------</option>
-							<c:forEach var="subject.cd" items="${subjects_set}">
+							<c:forEach var="subject" items="${subjects_set}">
 								<%-- 現在のsubject.cdと選択されていたf3が一致していた場合selectedを追記 --%>
-								<option value="${subject.cd}" <c:if test="${subject.cd==f3}">selected</c:if>>${subject.cd}</option>
+								<option value="${subject.name}" <c:if test="${subject.name==f3}">selected</c:if>>${subject.name}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -50,9 +50,9 @@
 						<label class="form-label" for="student-f4-select">回数</label>
 						<select class="form-select " id="student-f4-select" name="f4">
 							<option value="0">--------</option>
-							<c:forEach var="num" items="${counts_sets}">
+							<c:forEach var="num" items="${counts_set}">
 								<%-- 現在のnumと選択されていたf4が一致していた場合selectedを追記 --%>
-								<option value="${num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
+								<option value="$num}" <c:if test="${num==f4}">selected</c:if>>${num}</option>
 							</c:forEach>
 						</select>
 					</div>
