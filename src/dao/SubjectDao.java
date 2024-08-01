@@ -40,6 +40,7 @@ public class SubjectDao extends Dao {
 				// リザルトセットが存在する場合
 				// 学校インスタンスに学校コードと学校名をセット
 				subject.setName(rSet.getString("name"));
+				subject.setCd(rSet.getString("cd"));
 			} else {
 				// 存在しない場合
 				// 学校インスタンスにnullをセット
