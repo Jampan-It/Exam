@@ -32,7 +32,7 @@ public class SubjectListAction extends Action {
                 subjectMap.put("name", subject.getName());
                 subjectList.add(subjectMap);
             }
-            req.setAttribute("subjects", subjectList);
+            req.setAttribute("subjects", subjects);
         } else {
             req.setAttribute("error", "ログイン情報が正しくありません。");
         }
