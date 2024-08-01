@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Subject;
 import bean.Teacher;
+import bean.Test;
 import dao.ClassNumDao;
 import dao.SubjectDao;
 import dao.TestDao;
@@ -39,10 +41,10 @@ public class TestRegistAction extends Action {
 
 
 		//リクエストパラメータ―の取得 2
-		entYearStr = req.getParameter("f1");
-		classNum = req.getParameter("f2");
-		entSubject = req.getParameter("f3");
-		entNum = req.getParameter("f4");
+		entYearStr = req.getParameter("f1");//入学年度
+		classNum = req.getParameter("f2");//クラス番号
+		entSubject = req.getParameter("f3");//科目
+		entNum = req.getParameter("f4");//回数
 
 		//DBからデータ取得 3
 		// ログインユーザーの学校コードをもとにクラス番号の一覧を取得
@@ -50,8 +52,7 @@ public class TestRegistAction extends Action {
 
 		//DBからデータ取得 4
 		// ログインユーザーの学校コードをもとに科目の一覧を取得
-		List<String> subjects = sjDao.filter(teacher.getSchool());
-
+		List<Subject> subjects = sjDao.filter(teacher.getSchool());
 
 
 		//ビジネスロジック 4
@@ -105,6 +106,8 @@ public class TestRegistAction extends Action {
 			errors.put("subjects", "科目を選択してください");
 		}else if (Num == 0) {
 			errors.put("counts", "回数を選択してください");
+
+
 		}
 	}
 }
